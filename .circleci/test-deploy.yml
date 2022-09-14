@@ -14,7 +14,7 @@ jobs:
     docker:
       - image: cimg/base:current
         auth:
-          username: sreejiths@focaloid.com
+          username: sreejithfocaloid
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
