@@ -5,10 +5,10 @@ description: >
 executor: default
 
 parameters:
-  to:
+  imageName:
     type: string
     default: "World"
     description: "Hello to whom?"
 steps:
   - greet:
-      to: << parameters.to >>
+      imageName: << parameters.imageName >>
