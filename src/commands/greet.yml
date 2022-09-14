@@ -1,16 +1,15 @@
 description: >
-  This command echos "Hello World" using file inclusion.
+  This command scans a container.
 # What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:
-  to:
+  imageName:
     type: string
-    default: "World"
-    description: "Hello to whom?"
+    default: "node"
+    description: "Container to scan?"
 steps:
   - run:
       environment:
-        PARAM_TO: <<parameters.to>>
-        PARAM_KEY: $DOCKERHUB_PASSWORD
-      name: Hello Greeting
+        PARAM_IMAGE: <<parameters.imageName>>
+      name: Docker-Slim X-ray
       command: <<include(scripts/greet.sh)>>

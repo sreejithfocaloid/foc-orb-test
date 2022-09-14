@@ -5,4 +5,4 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 # docker pull dslim/docker-slim
 echo X-Ray Scan
 
-docker-slim xray --pull --target node
+docker-slim xray --pull --target "${PARAM_IMAGE}"
