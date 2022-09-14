@@ -27,7 +27,6 @@ jobs:
           name: Creating Dummy Artifacts
           command: |
             echo "my artifact file" > /tmp/artifact-1;
-            mkdir /tmp/artifact-1;
 
       - store_artifacts:
           path: /tmp/artifact-1
