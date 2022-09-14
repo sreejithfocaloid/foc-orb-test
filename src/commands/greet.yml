@@ -1,6 +1,6 @@
 description: >
   This command scans a container.
-# What will this command do?
+# #What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:
   imageName:
