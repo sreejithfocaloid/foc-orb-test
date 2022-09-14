@@ -23,11 +23,6 @@ jobs:
       # Run your orb's commands to validate them.
       - foc-orb-test/greet:
           imageName: node
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            echo "my artifact file" > /tmp/artifact-1;
-
       - store_artifacts:
           path: /tmp/artifact-1
           destination: artifact-file

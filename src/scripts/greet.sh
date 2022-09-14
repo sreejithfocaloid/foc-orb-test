@@ -6,3 +6,5 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 echo X-Ray Scan : "${PARAM_IMAGE}"
 
 docker-slim xray --pull --target "${PARAM_IMAGE}"
+
+echo "my artifact ddfile" > /tmp/artifact-1;
