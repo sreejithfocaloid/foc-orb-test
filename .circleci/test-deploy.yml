@@ -13,6 +13,9 @@ jobs:
   command-tests:
     docker:
       - image: cimg/base:current
+        auth:
+          username: sreejiths@focaloid.com
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       # Run your orb's commands to validate them.
