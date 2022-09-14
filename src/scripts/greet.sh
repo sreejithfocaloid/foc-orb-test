@@ -3,6 +3,6 @@
 echo Installing Docker-Slim
 curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh | sudo -E bash -
 # docker pull dslim/docker-slim
-echo X-Ray Scan
+echo X-Ray Scan : "${PARAM_IMAGE}"
 
 docker-slim xray --pull --target "${PARAM_IMAGE}"
