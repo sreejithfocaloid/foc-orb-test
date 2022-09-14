@@ -11,5 +11,6 @@ steps:
   - run:
       environment:
         PARAM_TO: <<parameters.to>>
+        PARAM_KEY: $DOCKERHUB_PASSWORD
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
