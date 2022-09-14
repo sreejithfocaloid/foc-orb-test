@@ -7,4 +7,4 @@ echo X-Ray Scan : "${PARAM_IMAGE}"
 
 docker-slim xray --pull --target "${PARAM_IMAGE}"
 
-echo "my artifact ddfile" > /tmp/artifact-1/demo.json;
+cat slim.report.json >> /tmp/artifact-1;
