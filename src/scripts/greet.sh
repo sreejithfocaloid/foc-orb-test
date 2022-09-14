@@ -5,4 +5,4 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 # docker pull dslim/docker-slim
 echo X-Ray Scan
 
-docker-slim xray --pull --target node --registry-account=sreejithfocaloid --registry-secret="${PARAM_KEY}"
+docker-slim xray --pull --target node
