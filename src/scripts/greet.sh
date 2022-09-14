@@ -5,6 +5,6 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 # docker pull dslim/docker-slim
 echo X-Ray Scan : "${PARAM_IMAGE}"
 
-docker-slim xray --pull --target "${PARAM_IMAGE}"
+docker-slim xray --pull --target=/tmp/artifact-1 "${PARAM_IMAGE}"
 
-echo "my artifact ddfile" > /tmp/artifact-1;
+#echo "my artifact ddfile" > /tmp/artifact-1;
