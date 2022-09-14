@@ -21,7 +21,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       # Run your orb's commands to validate them.
-      - foc-orb-test/greet
+      - foc-orb-test/greet:
           imageName: node
 workflows:
   test-deploy:
