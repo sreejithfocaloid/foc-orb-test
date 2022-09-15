@@ -20,7 +20,7 @@ usage:
             imageName: "<Give the Image name that should be scanned>"
         - store_artifacts:
             path: /tmp/artifact
-            destination: artifact-file
+            destination: "Filename for artifact"
   workflows:
     use-my-orb:
       jobs:

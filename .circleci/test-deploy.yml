@@ -25,7 +25,7 @@ jobs:
           imageName: node
       - store_artifacts:
           path: /tmp/artifact
-          destination: artifact-file
+          destination: xray-json
 
 workflows:
   test-deploy:
