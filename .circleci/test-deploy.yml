@@ -27,6 +27,7 @@ jobs:
           path: /tmp/artifact
           destination: xray-json
 
+
 workflows:
   test-deploy:
     jobs:
