@@ -12,4 +12,4 @@ steps:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
       name: Docker-Slim X-ray
-      command: <<include(scripts/greet.sh)>>
+      command: <<include(scripts/xray.sh)>>
