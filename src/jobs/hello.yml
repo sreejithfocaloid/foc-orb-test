@@ -7,8 +7,8 @@ executor: default
 parameters:
   imageName:
     type: string
-    default: "World"
-    description: "Hello to whom?"
+    default: "node"
+    description: "Container to scan"
 steps:
   - xray:
       imageName: << parameters.imageName >>
