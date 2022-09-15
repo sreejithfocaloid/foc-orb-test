@@ -24,7 +24,7 @@ jobs:
       - foc-orb-test/xray:
           imageName: node
       - store_artifacts:
-          path: /tmp/artifact-1
+          path: /tmp/artifact
           destination: artifact-file
 
 workflows:
