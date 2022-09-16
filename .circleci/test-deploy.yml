@@ -23,9 +23,7 @@ jobs:
       # Run your orb's commands to validate them.
       - foc-orb-test/xray:
           imageName: node
-      - store_artifacts:
-          path: /tmp/artifact
-          destination: xray-json
+      
 
 
 workflows:
