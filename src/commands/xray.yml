@@ -13,6 +13,6 @@ steps:
         PARAM_IMAGE: <<parameters.imageName>>
       name: Docker-Slim X-ray
       command: <<include(scripts/xray.sh)>>
-  - store_artifacts:
-            path: /tmp/artifact
-            destination: xray-json
+      - store_artifacts:
+                path: /tmp/artifact
+                destination: xray-json
