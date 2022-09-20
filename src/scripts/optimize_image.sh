@@ -32,7 +32,7 @@ ai=$(curl -s -u :"${API_TOKEN}" https://"${API_DOMAIN}"/account/identity)
 export SYSTEM_ORG="${ORGANIZATION_ID}" #$(jq -r '.default_org' <<< "${ai}")
 printf '[optimize_image.sh] SYSTEM_ORG: %s  \n'"${SYSTEM_ORG}"
 
-jsonData= ${SCRIPT_A}
+jsonData= "${SCRIPT_A}"
 
 jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${CONNECTOR_ID}}
 jsonDataUpdated=${jsonDataUpdated//__TARGET_IMAGE_NS__/${TARGET_IMAGE_NS}}
