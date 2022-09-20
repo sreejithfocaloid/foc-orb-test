@@ -11,8 +11,5 @@ steps:
   - run:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
-        SCRIPT_A: <<include(scripts/optimize_nxreq.json)>>
       name: Docker-Slim X-ray
-      command: |
-        <<include(scripts/xray.sh)>>
-        <<include(scripts/slim.sh)>>
+      command: <<include(scripts/xray.sh)>>
