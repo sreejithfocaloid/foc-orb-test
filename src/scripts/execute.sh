@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-SOURCE="./"
-while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
-CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+# SOURCE="./"
+# while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+# CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 
 
