@@ -8,6 +8,7 @@ set -euo pipefail
 SCRIPT=$(readlink -f "$0")
 CDIR=$(dirname "$SCRIPT")
 
+locate -i optimize_image_nxreq.json
 
 [[ -z "${API_TOKEN:-}" ]] && { echo "API_TOKEN is not set"; exit 1; }
 [[ -z "${API_DOMAIN:-}" ]] && { echo "API_DOMAIN is not set"; exit 1; }
