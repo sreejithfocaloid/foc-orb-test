@@ -23,7 +23,7 @@ CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 
 ai=$(curl -s -u :"${API_TOKEN}" https://"${API_DOMAIN}"/account/identity)
-# printf "ai:\n${ai}\n\n"
+ printf 'ai:\n %s \n\n'"${ai}"
 
 export SYSTEM_ORG="${ORGANIZATION_ID}" #$(jq -r '.default_org' <<< "${ai}")
 printf '[optimize_image.sh] SYSTEM_ORG: %s  \n'"${SYSTEM_ORG}"
