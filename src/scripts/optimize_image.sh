@@ -5,7 +5,7 @@ set -euo pipefail
 # SOURCE="./"
 # while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 # CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-CDIR="$(cd "$(dirname "$0")" && pwd)"
+CDIR="$(dirname "$(realpath "$0")")"
 
 
 [[ -z "${API_TOKEN:-}" ]] && { echo "API_TOKEN is not set"; exit 1; }
