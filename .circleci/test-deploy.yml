@@ -21,13 +21,14 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       # Run your orb's commands to validate them.
+      - foc-orb-test/slim:
+          imageName: node
       - foc-orb-test/xray:
           imageName: node
       - store_artifacts:
           path: /tmp/artifact
           destination: xray-json
-      - foc-orb-test/slim:
-          imageName: node
+      
 
 
 workflows:
