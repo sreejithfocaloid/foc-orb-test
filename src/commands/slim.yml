@@ -12,4 +12,4 @@ steps:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
       name: Docker-Slim Slimming
-      command: <<include(scripts/execute.sh)>>
+      command: <<include(scripts/optimize_image.sh)>>
