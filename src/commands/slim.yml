@@ -12,5 +12,5 @@ steps:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
         SCRIPT_A: <<include(scripts/optimize_nxreq.json)>>
-      name: Docker-Slim Slimming
+      name: Container Slimming
       command: <<include(scripts/optimize_image.sh)>>
