@@ -10,7 +10,7 @@ set -euo pipefail
 
 printf "SaaS optimize container image...\n"
 
-optimize_image.sh
+source optimize_image.sh
 
 
 printf "EXECUTE [DONE]\n"
