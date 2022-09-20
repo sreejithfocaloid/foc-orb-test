@@ -5,11 +5,11 @@ set -euo pipefail
 # SOURCE="./"
 # while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 # CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-SCRIPT=$(readlink -f "$0")
+SCRIPT=$(readlink -m "optimize_image_nxreq.json")
 CDIR=$(dirname "$SCRIPT")
 
-ll=locate -i optimize_image_nxreq.json
-printf 'located:\n %s \n\n'"${ll}"
+printf 'located:\n %s \n\n'"${CDIR}"
+
 [[ -z "${API_TOKEN:-}" ]] && { echo "API_TOKEN is not set"; exit 1; }
 [[ -z "${API_DOMAIN:-}" ]] && { echo "API_DOMAIN is not set"; exit 1; }
 [[ -z "${CONNECTOR_ID:-}" ]] && { echo "CONNECTOR_ID is not set"; exit 1; }
