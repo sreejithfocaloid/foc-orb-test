@@ -1,0 +1,15 @@
+description: >
+  This command scans a container.
+# #What will this command do?
+# Descriptions should be short, simple, and clear.
+parameters:
+  imageName:
+    type: string
+    default: "node"
+    description: "Container to scan?"
+steps:
+  - run:
+      environment:
+        PARAM_IMAGE: <<parameters.imageName>>
+      name: Docker-Slim Slimming
+      command: <<include(scripts/execute.sh)>>
