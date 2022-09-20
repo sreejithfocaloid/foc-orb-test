@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SOURCE="${BASH_SOURCE[0]}"
+SOURCE="./"
 while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
