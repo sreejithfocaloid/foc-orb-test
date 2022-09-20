@@ -1,10 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -euo pipefail
 
 # SOURCE="./"
 # while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 # CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+CDIR="$(cd "$(dirname "$0")" && pwd)"
 
 
 [[ -z "${API_TOKEN:-}" ]] && { echo "API_TOKEN is not set"; exit 1; }
@@ -29,7 +30,7 @@ ai=$(curl -s -u :"${API_TOKEN}" https://"${API_DOMAIN}"/account/identity)
 export SYSTEM_ORG="${ORGANIZATION_ID}" #$(jq -r '.default_org' <<< "${ai}")
 printf '[optimize_image.sh] SYSTEM_ORG: %s  \n'"${SYSTEM_ORG}"
 
-jsonData="$(<optimize_image_nxreq.json)"
+jsonData="$(<${CDIR}/optimize_image_nxreq.json)"
 
 jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${CONNECTOR_ID}}
 jsonDataUpdated=${jsonDataUpdated//__TARGET_IMAGE_NS__/${TARGET_IMAGE_NS}}
