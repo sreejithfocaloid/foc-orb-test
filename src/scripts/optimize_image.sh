@@ -41,17 +41,17 @@ nx=$(curl -s -H 'Content-Type: application/json' -X POST -u :${API_TOKEN} https:
 printf "NX:\n${nx}\n\n"
 
 nxID=$(jq -r '.id' <<< "${nx}")
-printf "minify NX id: ${nxID}\n"
+printf 'minify NX id: %s \n' "$nxID"
 
 nxState="unknown"
 while [[ ${nxState} != "completed" ]]; do
-	nxState=$(curl -s -u :${API_TOKEN} https://${API_DOMAIN}/orgs/${SYSTEM_ORG}/engine/executions/${nxID} | jq -r '.state')
-    printf "current NX state: ${nxState}\n"
+	nxState=$(curl -s -u :"${API_TOKEN}" https://"${API_DOMAIN}"/orgs/"${SYSTEM_ORG}"/engine/executions/"${nxID}" | jq -r '.state')
+    printf 'current NX state: %s \n'"$nxState"
     [[ "${nxState}" == "failed" || "${nxState}" == "null" ]] && { echo "minify NX failed - exiting..."; exit 1; }
     sleep 3
 done
 
-printf "nx[done] state=${nxState}\n"
+printf 'nx[done] state= %s \n'"$nxState"
 
 
 
