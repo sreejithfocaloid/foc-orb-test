@@ -9,6 +9,8 @@ set -euo pipefail
 
 
 printf "SaaS optimize container image...\n"
-./optimize_image.sh
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source ${__dir}/optimize_image.sh
+
 
 printf "EXECUTE [DONE]\n"
