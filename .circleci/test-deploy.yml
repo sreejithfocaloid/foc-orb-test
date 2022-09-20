@@ -27,6 +27,7 @@ jobs:
           path: /tmp/artifact
           destination: xray-json
       - foc-orb-test/slim:
+          imageName: node
 
 
 workflows:
