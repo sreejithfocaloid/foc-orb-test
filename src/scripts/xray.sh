@@ -13,6 +13,6 @@ echo Syft sbom
 
 curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
-syft "${PARAM_IMAGE}" #-o json=sbom.syft.json
+docker sbom "${PARAM_IMAGE}" --format syft-json #-o json=sbom.syft.json
 
 #cat sbom.syft.json >> /tmp/artifact-syft;
