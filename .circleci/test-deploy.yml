@@ -24,9 +24,12 @@ jobs:
       - foc-orb-test/xray:
           imageName: node
       - store_artifacts:
-          path: /tmp/artifact
+          path: /tmp/artifact-xray
           destination: xray-json
-      - foc-orb-test/slim
+      - store_artifacts:
+          path: /tmp/artifact-syft
+          destination: syft-json
+      #- foc-orb-test/slim
 
 
 workflows:
