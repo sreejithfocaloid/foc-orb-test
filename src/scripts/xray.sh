@@ -10,7 +10,7 @@ docker-slim xray --pull --target "${PARAM_IMAGE}"
 cat slim.report.json >> /tmp/artifact-xray;
 
 
-curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
 syft "${PARAM_IMAGE}" -o json=sbom.syft.json
 
