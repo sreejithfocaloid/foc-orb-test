@@ -24,7 +24,7 @@ echo "${imageId}"
 
 
 
-curl -X POST "https://platform.slim.dev/bff/orgs/rko.24nRz6GvLBo9hah9dqmhHON820R/collections/rkcol.2EADUkqrBkln6jbfc9RYbHiZVp7/images/"${imageId}"/pins" -H  "accept: application/json" -H  "Authorization: Basic ${SAAS_KEY}" -H  "Content-Type: application/json" -d "{\"scope\":\"digest\",\"connector\":\"dockerhub.public\",\"entity\":\"${PARAM_IMAGE}\",\"namespace\":\"${nameSpace}\",\"version\":\"${tag}\",\"digest\":\"${shaId}\",\"os\":\"linux\",\"arch\":\"amd64\"}"
+curl -X POST "https://platform.slim.dev/orgs/rko.24nRz6GvLBo9hah9dqmhHON820R/collections/rkcol.2EADUkqrBkln6jbfc9RYbHiZVp7/images/"${imageId}"/pins" -H  "accept: application/json" -H  "Authorization: Basic ${SAAS_KEY}" -H  "Content-Type: application/json" -d "{\"scope\":\"digest\",\"connector\":\"dockerhub.public\",\"entity\":\"${entity}\",\"namespace\":\"${nameSpace}\",\"version\":\"${tag}\",\"digest\":\"${shaId}\",\"os\":\"linux\",\"arch\":\"amd64\"}"
 
 
 
