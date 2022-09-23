@@ -8,7 +8,8 @@ echo X-Ray Scan : "${PARAM_IMAGE}"
 docker-slim xray --pull --target "${PARAM_IMAGE}" --changes-output all
 
 cat slim.report.json >> /tmp/artifact-xray;
-# echo $(cat slim.report.json)
+cat slim.report.json >> slim.report.txt;
+echo $(cat slim.report.txt)
 
 shaId=$(cat slim.report.json  | jq -r '.source_image.identity.id')
 tag=$(cat slim1.report.json  | jq -r '.source_image.identity.tags')
