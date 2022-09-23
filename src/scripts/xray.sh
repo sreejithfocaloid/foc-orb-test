@@ -15,6 +15,6 @@ echo "${shaId}"
 echo "${tag}"
 
 imageDetails=$(curl -X POST "https://platform.slim.dev/orgs/rko.24nRz6GvLBo9hah9dqmhHON820R/collections/rkcol.2EADUkqrBkln6jbfc9RYbHiZVp7/images" -H  "accept: application/json" -H  "Authorization: Basic ${SAAS_KEY}" -H  "Content-Type: application/json" -d "{\"connector\":\"dockerhub.public\",\"entity\":\"${PARAM_IMAGE}\",\"namespace\":\"library\",\"icon_url\":\"\",\"attributes\":{\"additionalProp1\":[null],\"additionalProp2\":[null],\"additionalProp3\":[null]}}")
-imageId=$("${imageDetails}"  | jq -r '.data.id')
+imageId=$(jq -r '.data.id' <<< "${imageDetails}")
 echo "${imageId}"
 #cat sbom.syft.json >> /tmp/artifact-syft;
