@@ -4,8 +4,8 @@ echo Installing Docker-Slim
 curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh | sudo -E bash -
 # docker pull dslim/docker-slim
 echo X-Ray Scan : "${PARAM_IMAGE}"
-
-docker-slim xray --pull --target "${PARAM_IMAGE}" --registry-account="${DOCKERHUB_USERNAME}"  --registry-secret="${DOCKERHUB_PASSWORD}"
+docker pull "${PARAM_IMAGE}"
+docker-slim xray --target "${PARAM_IMAGE}" --registry-account="${DOCKERHUB_USERNAME}"  --registry-secret="${DOCKERHUB_PASSWORD}"
 
 cat slim.report.json >> /tmp/artifact-xray;
 
