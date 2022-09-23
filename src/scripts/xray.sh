@@ -11,10 +11,7 @@ cat slim.report.json >> /tmp/artifact-xray;
 
 shaId=$(cat slim.report.json  | jq -r '.source_image.identity.id')
 tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
-if [ $tag == ****** ]
-then
-   tag="latest"
-fi
+echo latest
 echo "${shaId}"
 echo "${tag}"
 
