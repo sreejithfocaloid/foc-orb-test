@@ -9,17 +9,17 @@ docker-slim xray --pull --target "${PARAM_IMAGE}" --registry-account="${DOCKERHU
 
 cat slim.report.json >> /tmp/artifact-xray;
 
-shaId=$(cat slim.report.json  | jq -r '.source_image.identity.id')
+shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
 tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
+fullName=$(cat slim.report.json  | jq -r '.source_image.identity.names[0]')
 echo "${shaId}"
 echo "${tag}"
 
 imageDetails=$(curl -X POST "https://platform.slim.dev/orgs/rko.24nRz6GvLBo9hah9dqmhHON820R/collections/rkcol.2EADUkqrBkln6jbfc9RYbHiZVp7/images" -H  "accept: application/json" -H  "Authorization: Basic ${SAAS_KEY}" -H  "Content-Type: application/json" -d "{\"connector\":\"dockerhub.public\",\"entity\":\"${PARAM_IMAGE}\",\"namespace\":\"library\",\"icon_url\":\"\",\"attributes\":{\"additionalProp1\":[null],\"additionalProp2\":[null],\"additionalProp3\":[null]}}")
-
-echo "${imageDetails}"
 imageId=$(jq -r '.data.id' <<< "${imageDetails}")
 nameSpace=$(jq -r '.data.namespace' <<< "${imageDetails}")
-
+entity=$(jq -r '.data.entity' <<< "${imageDetails}")
+connector=$(jq -r '.data.connector' <<< "${imageDetails}")
 echo "${imageId}"
 #cat sbom.syft.json >> /tmp/artifact-syft;
 
