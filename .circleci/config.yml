@@ -17,8 +17,8 @@ workflows:
           filters: *filters
       - orb-tools/review:
           filters: *filters
-      - shellcheck/check:
-          filters: *filters
+      # - shellcheck/check:
+      #     filters: *filters
       - orb-tools/publish:
           orb-name: sreejithfocaloid/foc-orb-test
           vcs-type: << pipeline.project.type >>
