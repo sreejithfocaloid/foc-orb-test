@@ -10,8 +10,11 @@ docker-slim xray --pull --target "${PARAM_IMAGE}" --registry-account="${DOCKERHU
 cat slim.report.json >> /tmp/artifact-xray;
 
 shaId=$(cat slim.report.json  | jq -r '.source_image.identity.id')
-tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags')
-fullName=$(cat slim.report.json  | jq -r '.source_image.identity.names[0]')
+tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
+if [ $tag == ****** ]
+then
+   tag="latest"
+fi
 echo "${shaId}"
 echo "${tag}"
 
