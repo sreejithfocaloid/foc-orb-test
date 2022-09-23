@@ -9,8 +9,8 @@ docker-slim xray --pull --target "${PARAM_IMAGE}"
 
 cat slim.report.json >> /tmp/artifact-xray;
 
-shaId=$(cat slim.report.json  | jq -r '.source_image.identity.id')
-tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
+shaId=$(cmd < slim.report.json  | jq -r '.source_image.identity.id')
+tag=$(cmd < slim.report.json  | jq -r '.source_image.identity.tags[0]')
 echo "${shaId}"
 echo "${tag}"
 
