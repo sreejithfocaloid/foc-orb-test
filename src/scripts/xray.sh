@@ -5,10 +5,10 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 # docker pull dslim/docker-slim
 echo X-Ray Scan : "${PARAM_IMAGE}"
 
-docker-slim xray --pull --target "${PARAM_IMAGE}"
+docker-slim xray --pull --target "${PARAM_IMAGE}" --json-output
 
 cat slim.report.json >> /tmp/artifact-xray;
-echo $(cat slim.report.json)
+# echo $(cat slim.report.json)
 
 shaId=$(cat slim.report.json  | jq -r '.source_image.identity.id')
 tag=$(cat slim1.report.json  | jq -r '.source_image.identity.tags')
