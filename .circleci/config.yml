@@ -23,7 +23,7 @@ workflows:
           orb-name: sreejithfocaloid/foc-orb-test
           vcs-type: << pipeline.project.type >>
           requires:
-            [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
+            [orb-tools/lint, orb-tools/review, orb-tools/pack]
           # Use a context to hold your publishing token.
           context: orb-publishing
           filters: *filters
