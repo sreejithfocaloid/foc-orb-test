@@ -5,7 +5,7 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 # docker pull dslim/docker-slim
 echo X-Ray Scan : "${PARAM_IMAGE}"
 
-docker-slim xray --pull --target "${PARAM_IMAGE}" --json-output
+docker-slim xray --pull --target "${PARAM_IMAGE}" --changes-output all
 
 cat slim.report.json >> /tmp/artifact-xray;
 # echo $(cat slim.report.json)
