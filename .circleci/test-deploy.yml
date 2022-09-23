@@ -26,9 +26,6 @@ jobs:
       - store_artifacts:
           path: /tmp/artifact-xray
           destination: xray-json
-      - store_artifacts:
-          path: /tmp/artifact-syft
-          destination: syft-json
       #- foc-orb-test/slim
 
 
