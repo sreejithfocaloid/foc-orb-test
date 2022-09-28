@@ -1,5 +1,5 @@
 #!/bin/bash
-
+printenv | grep CONNECTOR_ID
 
 echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
