@@ -27,7 +27,6 @@ jobs:
       - foc-orb-test/vscan:
           imageName: node
       - store_artifacts:
-          path: /tmp/artifact-vscan
           destination: vscan-json
       #- foc-orb-test/slim
 
