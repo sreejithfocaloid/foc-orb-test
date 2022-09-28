@@ -13,7 +13,7 @@ nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
 echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
-jsonData="${XRAY_REQUEST}"
+jsonData="${VSCAN_REQUEST}"
 command=vscan
 jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
 jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
