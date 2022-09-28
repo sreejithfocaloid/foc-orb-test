@@ -5,8 +5,8 @@ echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
 jsonData="${VSCAN_REQUEST}"
 command=vscan
-jsonDataUpdated=${jsonData//__CONNECTOR_ID__/"$CONNECTOR_ID"}
-jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/"$NAMESPACE"}
+jsonDataUpdated=${jsonData//__CONNECTOR_ID__/"docker.public"}
+jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/"library"}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
