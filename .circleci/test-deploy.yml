@@ -21,13 +21,13 @@ jobs:
       # Run your orb's commands to validate them.
       - foc-orb-test/xray:
           imageName: node
+      - store_artifacts:
+          path: /tmp/artifact-xray
+          destination: xray-json
       - foc-orb-test/vscan:
           imageName: node
       - store_artifacts:
           path: /tmp/artifact-xray
-          destination: xray-json
-      - store_artifacts:
-          path: /tmp/artifact-vscan
           destination: vscan-json
       #- foc-orb-test/slim
 
