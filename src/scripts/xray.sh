@@ -51,22 +51,24 @@ done
 
 printf 'XRAY Completed state= %s '"$executionStatus \n"
 
-echo Fetching XRAY report : "${PARAM_IMAGE}"
+echo Fetching XRAY report : "${PARAM_IMAGE} \n"
 
 xrayReport=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
+echo "${xrayReport} \n"
+
 link=$(echo "${xrayReport}"|grep -Eo 'https://[^ >]+'|head -1)
 
-echo "${link}"
+echo "${link} \n"
 
 content=$(curl -L "${link}")
-#echo "${content}"
+echo "${content} \n"
 
 
-echo "${content}" >> /tmp/artifact-xray;
+echo "${link}" >> /tmp/artifact-xray;
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
 # tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
