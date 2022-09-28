@@ -62,7 +62,11 @@ link=$(echo "${xrayReport}"|grep -Eo 'https://[^ >]+'|head -1)
 
 echo "${link}"
 
-#echo "${xrayReport}" >> /tmp/artifact-xray;
+content=$(wget "${link}" -q -O -)
+echo "${content}"
+
+
+echo "${content}" >> /tmp/artifact-xray;
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
 # tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
