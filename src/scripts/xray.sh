@@ -3,19 +3,74 @@
 echo Installing Docker-Slim
 #curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh | sudo -E bash -
 # docker pull dslim/docker-slim
-echo X-Ray Scan : "${PARAM_IMAGE}"
+
 
 #docker-slim xray --pull --target "${PARAM_IMAGE}" --registry-account="${DOCKERHUB_USERNAME}"  --registry-secret="${DOCKERHUB_PASSWORD}"
 
-
+echo "Fetching Details for" : "${PARAM_IMAGE}"
 
 imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
   "https://platform.slim.dev/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
   -H "accept: application/json")
-echo "${imageDetails}" 
+ 
 
 imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
-echo "${imageDetail}"
+connectorId=$(jq -r '.connector' <<< "${imageDetail}")
+nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
+
+
+echo X-Ray Scan : "${PARAM_IMAGE}"
+
+xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
+  "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "config": {
+        "type": "inline",
+        "save": false,
+        "data": {
+            "name": "cfg",
+            "command": "xray",
+            "params": [
+                {
+                    "type": "target",
+                    "reference": {
+                        "type": "container.image",
+                        "store": {
+                            "type": "connector",
+                            "connector": "${connectorId}"
+                        },
+                        "attributes": {
+                            "namespace": "${nameSpace}",
+                            "repo": "${PARAM_IMAGE}"
+                        }
+                    }
+                },
+                {
+                    "type": "output",
+                    "reference": {
+                        "type": "container.image",
+                        "store": {
+                            "type": "internal"
+                        },
+                        "attributes": {
+                            "save": "false"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}')
+
+echo "${xrayRequest}"
+
+
+
+
+
+
 # cat slim.report.json >> /tmp/artifact-xray;
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
