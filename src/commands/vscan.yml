@@ -11,6 +11,6 @@ steps:
   - run:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
-        SCRIPT_A: <<include(scripts/xray_request.json)>>
+        VSCAN_REQUEST: <<include(scripts/xray_request.json)>>
       name: Container Scanning
       command: <<include(scripts/vscan.sh)>>

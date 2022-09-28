@@ -3,7 +3,7 @@
 
 echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
-jsonData="${XRAY_REQUEST}"
+jsonData="${VSCAN_REQUEST}"
 command=vscan
 jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${CONNECTOR_ID}}
 jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${NAMESPACE}}
@@ -15,6 +15,7 @@ xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
+
 
 executionId=$(jq -r '.id' <<< "${xrayRequest}")
 

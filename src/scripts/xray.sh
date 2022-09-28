@@ -66,20 +66,6 @@ echo "${xrayReport}" >> /tmp/artifact-xray;
 
 
 
-echo "${xrayReport}"
-
-
-
-
-#echo "${link}" >> /tmp/artifact-xray;
-
-
-
-
-
-
-
-
 
 
 
