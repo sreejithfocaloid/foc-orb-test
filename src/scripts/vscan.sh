@@ -60,5 +60,5 @@ echo "${xrayReport}" >> /tmp/artifact-vscan;
 
 
 
-echo "${xrayReport}"
+
 
