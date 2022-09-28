@@ -58,7 +58,7 @@ xrayReport=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
-link=grep -Po '(?<=href=")[^"]*' xrayReport
+link=$(grep -Po '(?<=href=")[^"]*' "${xrayReport}")
 
 echo "${link}"
 
