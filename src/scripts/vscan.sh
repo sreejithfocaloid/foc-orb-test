@@ -3,3 +3,5 @@
 
 echo "${CONNECTOR_ID}"
 
+printenv
+
