@@ -69,8 +69,13 @@ echo "${xrayReport}" >> /tmp/artifact-xray;
 
 
 shaId=$(jq -r '.source_image.identity.digests[0]' <<< "${xrayReport}")
-tag=$(jq -r '.source_image.identity.tags[0]' <<< "${xrayReport}")
+#tag=$(jq -r '.source_image.identity.tags[0]' <<< "${xrayReport}")
 fullName=$(jq -r '.source_image.identity.names[0]' <<< "${xrayReport}")
+
+targetRef=$(jq -r '.target_reference' <<< "${xrayReport}")
+targ1=$(echo "${targetRef}" | cut -d "@" -f1)
+tag=$(echo "${targ1}" | cut -d ":" -f2)
+
 echo "${shaId}"
 echo "${tag}"
 echo "${fullName}"
