@@ -62,8 +62,8 @@ link=$(echo "${xrayReport}"|grep -Eo 'https://[^ >]+'|head -1)
 
 echo "${link}"
 
-content=$(wget "${link}" -q -O -)
-echo "${content}"
+content=$(curl -L "${link}")
+#echo "${content}"
 
 
 echo "${content}" >> /tmp/artifact-xray;
