@@ -18,9 +18,7 @@ imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
-export connectorId
-export nameSpace
-export PARAM_IMAGE
+export CONNECTOR_ID="${connectorId}"
 
 echo Starting X-Ray Scan : "${PARAM_IMAGE}"
 

@@ -1,5 +1,5 @@
 #!/bin/bash
 
 
-echo "${connectorId}"
+echo "${CONNECTOR_ID}"
 
