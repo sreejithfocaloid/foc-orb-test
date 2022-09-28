@@ -20,7 +20,8 @@ imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
 echo "${imageDetail}"
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
-
+imageId=$(jq -r '.data.id' <<< "${imageDetail}")
+entity=$(jq -r '.data.entity' <<< "${imageDetail}")
 
 
 
@@ -74,15 +75,11 @@ fullName=$(jq -r '.source_image.identity.names[0]' <<< "${xrayReport}")
 echo "${shaId}"
 echo "${tag}"
 echo "${fullName}"
-# imageDetails=$(curl -u ":${SAAS_KEY}" -X POST "https://platform.slim.dev/orgs/${ORG_ID}/collections/${FAV_COLLECTION_ID}/images" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"connector\":\"dockerhub.public\",\"entity\":\"${PARAM_IMAGE}\",\"namespace\":\"library\",\"icon_url\":\"\",\"attributes\":{\"additionalProp1\":[null],\"additionalProp2\":[null],\"additionalProp3\":[null]}}")
-# imageId=$(jq -r '.data.id' <<< "${imageDetails}")
-# nameSpace=$(jq -r '.data.namespace' <<< "${imageDetails}")
-# entity=$(jq -r '.data.entity' <<< "${imageDetails}")
-# connector=$(jq -r '.data.connector' <<< "${imageDetails}")
-# echo "${imageId}"
 
 
 
-# curl -u ":${SAAS_KEY}" -X POST "https://platform.slim.dev/orgs/${ORG_ID}/collections/${FAV_COLLECTION_ID}/images/"${imageId}"/pins" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"scope\":\"tag\",\"connector\":\"dockerhub.public\",\"entity\":\"${entity}\",\"namespace\":\"${nameSpace}\",\"version\":\"${tag}\",\"digest\":\"\",\"os\":\"linux\",\"arch\":\"amd64\"}"
+
+
+curl -u ":${SAAS_KEY}" -X POST "https://platform.slim.dev/orgs/${ORG_ID}/collections/${FAV_COLLECTION_ID}/images/"${imageId}"/pins" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"scope\":\"tag\",\"connector\":\"${connectorId}\",\"entity\":\"${entity}\",\"namespace\":\"${nameSpace}\",\"version\":\"${tag}\",\"digest\":\"\",\"os\":\"linux\",\"arch\":\"amd64\"}"
 
 
