@@ -12,5 +12,5 @@ steps:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
         VSCAN_REQUEST: <<include(scripts/xray_request.json)>>
-      name: Container Scanning
+      name: Engine Execution - Vulnarability Scan
       command: <<include(scripts/vscan.sh)>>

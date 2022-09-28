@@ -12,5 +12,5 @@ steps:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
         XRAY_REQUEST: <<include(scripts/xray_request.json)>>
-      name: Engine Execution
+      name: Engine Execution - X-Ray
       command: <<include(scripts/xray.sh)>>
