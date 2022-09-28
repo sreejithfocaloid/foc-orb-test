@@ -40,10 +40,10 @@ executionId=$(jq -r '.id' <<< "${xrayRequest}")
 echo Starting X-Ray Scan status check : "${PARAM_IMAGE}"
 
 
-executionStatus=$(curl -X 'GET' \
+executionStatus=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}" \
   -H 'accept: application/json')
-  
+
 echo "${executionStatus}"
 # cat slim.report.json >> /tmp/artifact-xray;
 
