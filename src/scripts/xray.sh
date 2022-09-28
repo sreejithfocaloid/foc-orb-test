@@ -58,6 +58,10 @@ xrayReport=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
+#echo "${xrayReport}" >> /tmp/artifact-xray;
+
+
+
 echo "${xrayReport}"
 
 link=$(echo "${xrayReport}"|grep -Eo 'https://[^ >]+'|head -1)
@@ -68,7 +72,17 @@ content=$(curl -L "${link}")
 echo "${content}"
 
 
-echo "${link}" >> /tmp/artifact-xray;
+cat "${link}" >> /tmp/artifact-xray;
+
+
+
+
+
+
+
+
+
+
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
 # tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
