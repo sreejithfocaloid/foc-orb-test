@@ -14,9 +14,9 @@ imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
   -H "accept: application/json")
  
 
-imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
-connectorId=$(jq -r '.connector' <<< "${imageDetail}")
-nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
+export imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
+export connectorId=$(jq -r '.connector' <<< "${imageDetail}")
+export nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
 
 echo Starting X-Ray Scan : "${PARAM_IMAGE}"
