@@ -20,11 +20,17 @@ jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
+echo "${jsonDataUpdated}"
 xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
+
+
+echo "${xrayRequest}"
+
+
 
 executionId=$(jq -r '.id' <<< "${xrayRequest}")
 
