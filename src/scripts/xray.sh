@@ -12,7 +12,7 @@ echo X-Ray Scan : "${PARAM_IMAGE}"
 imageDetails=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   'https://platform.slim.dev/orgs/rko.24nRz6GvLBo9hah9dqmhHON820R/collection/images?limit=10&entity=node' \
   -H 'accept: application/json')
-echo imageDetails  
+echo "${imageDetails}"  
 # cat slim.report.json >> /tmp/artifact-xray;
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
