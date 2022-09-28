@@ -16,13 +16,13 @@ imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
 
 
 imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
-
+echo "${imageDetail}"
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
-imageId=$(jq -r '.data.id' <<< "${imageDetail}")
-entity=$(jq -r '.data.entity' <<< "${imageDetail}")
+imageId=$(jq -r '.id' <<< "${imageDetail}")
+entity=$(jq -r '.entity' <<< "${imageDetail}")
 
-
+echo "${imageId}"
 
 
 echo Starting X-Ray Scan : "${PARAM_IMAGE}"
