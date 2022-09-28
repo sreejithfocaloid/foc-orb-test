@@ -20,9 +20,9 @@ jobs:
       - checkout
       # Run your orb's commands to validate them.
       - foc-orb-test/xray:
-          imageName: python
+          imageName: node
       - foc-orb-test/vscan:
-          imageName: python
+          imageName: node
       - store_artifacts:
           path: /tmp/artifact-xray
           destination: xray-json
