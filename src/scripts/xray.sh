@@ -27,6 +27,7 @@ jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
 jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
+
 xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
@@ -40,8 +41,9 @@ echo Starting X-Ray Scan status check : "${PARAM_IMAGE}"
 
 
 executionStatus=$(curl -X 'GET' \
-  "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/rknx.2FNmJ6Cba3EHnVatEalgW00UaHT" \
+  "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}" \
   -H 'accept: application/json')
+  
 echo "${executionStatus}"
 # cat slim.report.json >> /tmp/artifact-xray;
 
