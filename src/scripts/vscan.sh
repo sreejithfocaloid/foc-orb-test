@@ -16,6 +16,9 @@ xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
 
+echo "${xrayRequest}"
+
+
 
 executionId=$(jq -r '.id' <<< "${xrayRequest}")
 
