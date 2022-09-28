@@ -55,9 +55,11 @@ echo Fetching XRAY report : "${PARAM_IMAGE}"
 
 xrayReport=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}/result/report" \
-  -H 'accept: */*')
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json')
+echo "${xrayReport}"
 
-cat "${xrayReport}" >> /tmp/artifact-xray;
+echo "${xrayReport}" >> /tmp/artifact-xray;
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
 # tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
