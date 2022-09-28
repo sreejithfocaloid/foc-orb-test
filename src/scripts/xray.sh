@@ -19,13 +19,16 @@ connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
 export CONNECTOR_ID="${connectorId}"
+export NAMESPACE="${nameSpace}"
+
+
 
 echo Starting X-Ray Scan : "${PARAM_IMAGE}"
 
 jsonData="${XRAY_REQUEST}"
 command=xray
-jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
-jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
+jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${CONNECTOR_ID}}
+jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${NAMESPACE}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
