@@ -1,12 +1,22 @@
 #!/bin/bash
-echo "$CONNECTOR_ID"
+
+echo "Fetching Details for" : "${PARAM_IMAGE}"
+
+imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
+  "https://platform.slim.dev/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
+  -H "accept: application/json")
+ 
+
+imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
+connectorId=$(jq -r '.connector' <<< "${imageDetail}")
+nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
 echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
-jsonData="${VSCAN_REQUEST}"
+jsonData="${XRAY_REQUEST}"
 command=vscan
-jsonDataUpdated=${jsonData//__CONNECTOR_ID__/"docker.public"}
-jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/"library"}
+jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
+jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
@@ -16,16 +26,12 @@ xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
 
-echo "${xrayRequest}"
-
-
-
 executionId=$(jq -r '.id' <<< "${xrayRequest}")
 
 
 echo Starting Vulnerability Scan status check : "${PARAM_IMAGE}"
 
-echo "${executionId}"
+
 
 executionStatus="unknown"
 while [[ ${executionStatus} != "completed" ]]; do
