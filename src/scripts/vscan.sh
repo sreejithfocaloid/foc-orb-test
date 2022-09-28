@@ -21,7 +21,7 @@ executionId=$(jq -r '.id' <<< "${xrayRequest}")
 
 echo Starting Vulnerability Scan status check : "${PARAM_IMAGE}"
 
-
+echo "${executionId}"
 
 executionStatus="unknown"
 while [[ ${executionStatus} != "completed" ]]; do
