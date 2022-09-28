@@ -11,6 +11,6 @@ steps:
   - run:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
-        SCRIPT_A: <<include(scripts/optimize_nxreq.json)>>
-      name: Container Slimming
-      command: <<include(scripts/optimize_image.sh)>>
+        SCRIPT_A: <<include(scripts/xray_request.json)>>
+      name: Container Scanning
+      command: <<include(scripts/vscan.sh)>>
