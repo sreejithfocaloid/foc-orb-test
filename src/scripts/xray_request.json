@@ -16,7 +16,8 @@
                       },
                       "attributes": {
                           "namespace": "__NAMESPACE__",
-                          "repo": "__REPO__"
+                          "repo": "__REPO__",
+                          "version":"latest"
                       }
                   }
               },
