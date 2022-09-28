@@ -57,7 +57,6 @@ xrayReport=$(curl -u ":${SAAS_KEY}" -X 'GET' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
-echo "${xrayReport}"
 
 echo "${xrayReport}" >> /tmp/artifact-xray;
 
