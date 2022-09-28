@@ -12,5 +12,5 @@ steps:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
         XRAY_REQUEST: <<include(scripts/xray_request.json)>>
-      name: Docker-Slim X-ray
+      name: Engine Execution
       command: <<include(scripts/xray.sh)>>

@@ -44,15 +44,20 @@ echo Starting X-Ray Scan status check : "${PARAM_IMAGE}"
 executionStatus="unknown"
 while [[ ${executionStatus} != "completed" ]]; do
 	executionStatus=$(curl -s -u :"${SAAS_KEY}" https://platform.slim.dev/orgs/"${ORG_ID}"/engine/executions/"${executionId}" | jq -r '.state')
-    printf 'current NX state: %s '"$executionStatus \n"
+    echo 'current NX state: %s '"$executionStatus \n"
     [[ "${executionStatus}" == "failed" || "${executionStatus}" == "null" ]] && { echo "XRAY failed - exiting..."; exit 1; }
     sleep 3
 done
 
-printf 'XRAY Completed state= %s '"$executionStatus \n"
+echo 'XRAY Completed state= %s '"$executionStatus \n"
 
+echo Fetching XRAY report : "${PARAM_IMAGE}"
 
-# cat slim.report.json >> /tmp/artifact-xray;
+xrayReport=$(curl -u ":${SAAS_KEY}" -X 'GET' \
+  "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}/result/report" \
+  -H 'accept: */*')
+
+cat "${xrayReport}" >> /tmp/artifact-xray;
 
 # shaId=$(cat slim.report.json  | jq -r '.source_image.identity.digests[0]')
 # tag=$(cat slim.report.json  | jq -r '.source_image.identity.tags[0]')
