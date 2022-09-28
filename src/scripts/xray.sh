@@ -31,7 +31,7 @@ jsonData="${XRAY_REQUEST}"
 command=xray
 jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
 jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
-jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
+jsonDataUpdated=${jsonDataUpdated//__REPO__/"${PARAM_IMAGE}"}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
 xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
