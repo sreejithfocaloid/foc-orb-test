@@ -44,12 +44,12 @@ echo Starting X-Ray Scan status check : "${PARAM_IMAGE}"
 executionStatus="unknown"
 while [[ ${executionStatus} != "completed" ]]; do
 	executionStatus=$(curl -s -u :"${SAAS_KEY}" https://platform.slim.dev/orgs/"${ORG_ID}"/engine/executions/"${executionId}" | jq -r '.state')
-    echo 'current NX state: %s '"$executionStatus \n"
+    printf 'current NX state: %s '"$executionStatus \n"
     [[ "${executionStatus}" == "failed" || "${executionStatus}" == "null" ]] && { echo "XRAY failed - exiting..."; exit 1; }
     sleep 3
 done
 
-echo 'XRAY Completed state= %s '"$executionStatus \n"
+printf 'XRAY Completed state= %s '"$executionStatus \n"
 
 echo Fetching XRAY report : "${PARAM_IMAGE}"
 
