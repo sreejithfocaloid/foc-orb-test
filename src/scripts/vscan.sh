@@ -56,7 +56,7 @@ xrayReport=$(curl -L -u ":${SAAS_KEY}" -X 'GET' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
-echo "${xrayReport}" >> /tmp/artifact-xray;
+echo "${xrayReport}" >> /tmp/artifact-vscan;
 
 
 
