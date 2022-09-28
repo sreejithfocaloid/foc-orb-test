@@ -21,48 +21,17 @@ nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
 echo X-Ray Scan : "${PARAM_IMAGE}"
 
+jsonData="${XRAY_REQUEST}"
+command=xray
+jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
+jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
+jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
+jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
-  -d '{
-    "config": {
-        "type": "inline",
-        "save": false,
-        "data": {
-            "name": "cfg",
-            "command": "xray",
-            "params": [
-                {
-                    "type": "target",
-                    "reference": {
-                        "type": "container.image",
-                        "store": {
-                            "type": "connector",
-                            "connector": "${connectorId}"
-                        },
-                        "attributes": {
-                            "namespace": "${nameSpace}",
-                            "repo": "${PARAM_IMAGE}"
-                        }
-                    }
-                },
-                {
-                    "type": "output",
-                    "reference": {
-                        "type": "container.image",
-                        "store": {
-                            "type": "internal"
-                        },
-                        "attributes": {
-                            "save": "false"
-                        }
-                    }
-                }
-            ]
-        }
-    }
-}')
+  -d "${jsonDataUpdated}")
 
 echo "${xrayRequest}"
 

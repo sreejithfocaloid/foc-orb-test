@@ -1,0 +1,38 @@
+{
+  "config": {
+      "type": "inline",
+      "save": false,
+      "data": {
+          "name": "cfg",
+          "command": "__COMMAND__",
+          "params": [
+              {
+                  "type": "target",
+                  "reference": {
+                      "type": "container.image",
+                      "store": {
+                          "type": "connector",
+                          "connector": "__CONNECTOR_ID__"
+                      },
+                      "attributes": {
+                          "namespace": "__NAMESPACE__",
+                          "repo": "__REPO__"
+                      }
+                  }
+              },
+              {
+                  "type": "output",
+                  "reference": {
+                      "type": "container.image",
+                      "store": {
+                          "type": "internal"
+                      },
+                      "attributes": {
+                          "save": "false"
+                      }
+                  }
+              }
+          ]
+      }
+  }
+}
