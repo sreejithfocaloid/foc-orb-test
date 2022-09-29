@@ -9,7 +9,7 @@
 
 imageDetail=$(printenv imageDetail)
 
-echo $imageDetail
+echo "$imageDetail"
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
