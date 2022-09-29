@@ -19,10 +19,10 @@ usage:
             path: /tmp/artifact-xray
             destination: "Filename for artifact"
         - <orb-name>/vscan:
-          imageName: "<Give the Image name that should be scanned>"
+            imageName: "<Give the Image name that should be scanned>"
         - store_artifacts:
-          path: /tmp/artifact-vscan
-          destination: "Filename for artifact"
+            path: /tmp/artifact-vscan
+            destination: "Filename for artifact"
   workflows:
     use-my-orb:
       jobs:
