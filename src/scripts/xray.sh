@@ -7,9 +7,9 @@ imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
   -H "accept: application/json")
  
 
-
-imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
 export imageDetail
+imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
+
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 imageId=$(jq -r '.id' <<< "${imageDetail}")
