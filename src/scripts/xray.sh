@@ -7,8 +7,6 @@ imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
   "${API_DOMAIN}/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
   -H "accept: application/json")
  
-echo "${imageDetails}"
-
 
 imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
 
