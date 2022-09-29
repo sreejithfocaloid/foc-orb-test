@@ -1,11 +1,4 @@
 #!/bin/bash
-#echo Hello "${PARAM_TO}"
-echo Installing Docker-Slim
-#curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh | sudo -E bash -
-# docker pull dslim/docker-slim
-
-
-#docker-slim xray --pull --target "${PARAM_IMAGE}" --registry-account="${DOCKERHUB_USERNAME}"  --registry-secret="${DOCKERHUB_PASSWORD}"
 
 echo "Fetching Details for" : "${PARAM_IMAGE}"
 
@@ -16,7 +9,7 @@ imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
 
 
 imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
-echo "${imageDetail}"
+export imageDetail
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 imageId=$(jq -r '.id' <<< "${imageDetail}")

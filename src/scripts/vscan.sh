@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo "Fetching Details for" : "${PARAM_IMAGE}"
+# echo "Fetching Details for" : "${PARAM_IMAGE}"
 
-imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
-  "https://platform.slim.dev/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
-  -H "accept: application/json")
+# imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
+#   "https://platform.slim.dev/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
+#   -H "accept: application/json")
  
 
-imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
+# imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
