@@ -7,7 +7,7 @@
 #   -H "accept: application/json")
  
 
-# imageDetail=$(jq -r '.data[0]' <<< "${imageDetails}")
+imageDetail="$imageDetail"
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
 nameSpace=$(jq -r '.namespace' <<< "${imageDetail}")
 
