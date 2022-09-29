@@ -7,7 +7,7 @@
 #   -H "accept: application/json")
  
 
-imageDetail=$(echo imageDetail)
+imageDetail=$(printenv imageDetail)
 
 echo $imageDetail
 connectorId=$(jq -r '.connector' <<< "${imageDetail}")
