@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Fetching image details
 echo "Fetching Details for" : "${PARAM_IMAGE}"
 
 imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
@@ -25,7 +25,7 @@ jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
 jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/"${PARAM_IMAGE}"}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
-
+#Starting Xray Scan
 xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
@@ -34,7 +34,7 @@ xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
 
 executionId=$(jq -r '.id' <<< "${xrayRequest}")
 
-
+#Fetching the status of X-ray scan
 echo Starting X-Ray Scan status check : "${PARAM_IMAGE}"
 
 
@@ -48,7 +48,7 @@ while [[ ${executionStatus} != "completed" ]]; do
 done
 
 printf 'XRAY Completed state= %s '"$executionStatus \n"
-
+#Fetching the X-ray Report
 echo Fetching XRAY report : "${PARAM_IMAGE}"
 
 xrayReport=$(curl -L -u ":${SAAS_KEY}" -X 'GET' \
@@ -56,7 +56,7 @@ xrayReport=$(curl -L -u ":${SAAS_KEY}" -X 'GET' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
-echo "${xrayReport}" >> /tmp/artifact-xray;
+echo "${xrayReport}" >> /tmp/artifact-xray;#Uploading report to Artifact
 
 
 
@@ -73,7 +73,7 @@ echo "${imageId}"
 
 
 
-
+#Adding the container to Favourites
 
 curl -u ":${SAAS_KEY}" -X POST "https://platform.slim.dev/orgs/${ORG_ID}/collections/${FAV_COLLECTION_ID}/images/${imageId}/pins" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"scope\":\"digest\",\"connector\":\"${connectorId}\",\"entity\":\"${entity}\",\"namespace\":\"${nameSpace}\",\"version\":\"${tag}\",\"digest\":\"${shaId}\",\"os\":\"linux\",\"arch\":\"amd64\"}"
 

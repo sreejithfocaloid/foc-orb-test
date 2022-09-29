@@ -1,0 +1,14 @@
+description: >
+  This job will generate vulnarability scan report of a given container.
+# What will this job do?
+
+executor: default
+
+parameters:
+  imageName:
+    type: string
+    default: "node"
+    description: "Container to scan"
+steps:
+  - vscan:
+      imageName: << parameters.imageName >>

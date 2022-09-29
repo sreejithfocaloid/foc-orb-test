@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Fetching the Image details using the image nameeg:node
 echo "Fetching Details for" : "${PARAM_IMAGE}"
 
 imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
@@ -20,21 +20,21 @@ jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/${PARAM_IMAGE}}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
-echo "${jsonDataUpdated}"
-xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
+#Starting Vulnarability Scan
+vscanRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
 
 
-echo "${xrayRequest}"
 
 
 
-executionId=$(jq -r '.id' <<< "${xrayRequest}")
 
+executionId=$(jq -r '.id' <<< "${vscanRequest}")
 
+#Starting Vulnarability Scan Status Check
 echo Starting Vulnerability Scan status check : "${PARAM_IMAGE}"
 
 
@@ -48,7 +48,7 @@ while [[ ${executionStatus} != "completed" ]]; do
 done
 
 printf 'Vulnerability scan Completed state= %s '"$executionStatus \n"
-
+#Fetching the report of Vulnarability Scan
 echo Fetching Vulnerability scan report : "${PARAM_IMAGE}"
 
 xrayReport=$(curl -L -u ":${SAAS_KEY}" -X 'GET' \
@@ -56,7 +56,7 @@ xrayReport=$(curl -L -u ":${SAAS_KEY}" -X 'GET' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
-echo "${xrayReport}" >> /tmp/artifact-vscan;
+echo "${xrayReport}" >> /tmp/artifact-vscan;#Report will be added to Artifact
 
 
 

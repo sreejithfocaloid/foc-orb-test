@@ -1,5 +1,5 @@
 description: >
-  This orb can be used to take xray of a container using Docker Slim
+  This orb can be used to take xray and vulnarability report of a container using SAAS Api
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
@@ -13,14 +13,16 @@ usage:
         - image: "cimg/base:stable"
       steps:
         - checkout
-        - setup_remote_docker:
-            version: 20.10.14
-            docker_layer_caching: true
         - <orb-name>/xray:
             imageName: "<Give the Image name that should be scanned>"
         - store_artifacts:
-            path: /tmp/artifact
+            path: /tmp/artifact-xray
             destination: "Filename for artifact"
+        - <orb-name>/vscan:
+          imageName: "<Give the Image name that should be scanned>"
+        - store_artifacts:
+          path: /tmp/artifact-vscan
+          destination: "Filename for artifact"
   workflows:
     use-my-orb:
       jobs:
