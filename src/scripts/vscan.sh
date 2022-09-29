@@ -3,7 +3,7 @@
 echo "Fetching Details for" : "${PARAM_IMAGE}"
 
 imageDetails=$(curl -u ":${SAAS_KEY}" -X "GET" \
-  "https://platform.slim.dev/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
+  "${API_DOMAIN}/orgs/${ORG_ID}/collection/images?limit=10&entity=${PARAM_IMAGE}" \
   -H "accept: application/json")
  
 
@@ -22,7 +22,7 @@ jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 
 #Starting Vulnarability Scan
 vscanRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
-  "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions" \
+  "${API_DOMAIN}/orgs/${ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
@@ -41,7 +41,7 @@ echo Starting Vulnerability Scan status check : "${PARAM_IMAGE}"
 
 executionStatus="unknown"
 while [[ ${executionStatus} != "completed" ]]; do
-	executionStatus=$(curl -s -u :"${SAAS_KEY}" https://platform.slim.dev/orgs/"${ORG_ID}"/engine/executions/"${executionId}" | jq -r '.state')
+	executionStatus=$(curl -s -u :"${SAAS_KEY}" "${API_DOMAIN}"/orgs/"${ORG_ID}"/engine/executions/"${executionId}" | jq -r '.state')
     printf 'current NX state: %s '"$executionStatus \n"
     [[ "${executionStatus}" == "failed" || "${executionStatus}" == "null" ]] && { echo "Vulnerability scan failed - exiting..."; exit 1; }
     sleep 3
@@ -52,7 +52,7 @@ printf 'Vulnerability scan Completed state= %s '"$executionStatus \n"
 echo Fetching Vulnerability scan report : "${PARAM_IMAGE}"
 
 xrayReport=$(curl -L -u ":${SAAS_KEY}" -X 'GET' \
-  "https://platform.slim.dev/orgs/${ORG_ID}/engine/executions/${executionId}/result/report" \
+  "${API_DOMAIN}/orgs/${ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
