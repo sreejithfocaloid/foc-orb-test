@@ -2,8 +2,6 @@ description: >
   This job will generate xray report of a given container.
 # What will this job do?
 
-executor: default
-
 parameters:
   imageName:
     type: string
