@@ -9,6 +9,8 @@ usage:
     <orb-name>: <namespace>/<orb-name>@1.2.3
   jobs:
     build:
+      docker:
+        - image: "cimg/base:stable"
       parameters:
         image-name:
           description: Image to be scanned.
