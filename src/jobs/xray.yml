@@ -3,7 +3,7 @@ description: >
 # What will this job do?
 
 docker:
-      - image: cimg/base:current
+  - image: cimg/base:current
 
 parameters:
   imageName:
