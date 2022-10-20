@@ -6,13 +6,14 @@ orbs:
 filters: &filters
   tags:
     only: /.*/
-
+executors:
+  default:
+    docker:
+      - image: cimg/base:current
 jobs:
   # Create a job to test the commands of your orbs.
   # You may want to add additional validation steps to ensure the commands are working as expected.
   command-tests:
-    docker:
-      - image: cimg/base:current
     parameters:
       image-name:
         description: Image to be scanned.
@@ -37,6 +38,7 @@ jobs:
 workflows:
   test-deploy:
     jobs:
+      executor: default
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
       - command-tests:
           filters: *filters
