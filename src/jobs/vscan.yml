@@ -2,8 +2,6 @@ description: >
   This job will generate vulnarability scan report of a given container.
 # What will this job do?
 
-executor: ""
-
 parameters:
   imageName:
     type: string
