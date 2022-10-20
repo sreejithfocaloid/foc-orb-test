@@ -1,5 +1,5 @@
 description: >
-  This command scans a container.
+  This command scans a container for vulnerability and generates a report.
 # #What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:

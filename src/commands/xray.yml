@@ -1,5 +1,6 @@
 description: >
-  This command scans a container.
+  This command scans a container and generates a X-ray report.
+  After generating the X-ray report,the container is added to favourite section in Saas portal.
 # #What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:
