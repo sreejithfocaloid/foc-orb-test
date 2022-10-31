@@ -1,5 +1,5 @@
 description: >
-  This orb can be used to take xray and vulnarability report of a container using SAAS Api
+  This orb can be used to take xray report of a container using SAAS Api
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
@@ -22,11 +22,6 @@ usage:
             imageName: << parameters.image-name >>
         - store_artifacts:
             path: /tmp/artifact-xray
-            destination: "Filename for artifact"
-        - <orb-name>/vscan:
-            imageName: << parameters.image-name >>
-        - store_artifacts:
-            path: /tmp/artifact-vscan
             destination: "Filename for artifact"
   workflows:
     use-my-orb:

@@ -1,0 +1,30 @@
+description: >
+  This orb can be used to take vulnarability report of a container using SAAS Api
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    <orb-name>: <namespace>/<orb-name>@1.2.3
+  jobs:
+    build:
+      docker:
+        - image: "cimg/base:stable"
+      parameters:
+        image-name:
+          description: Image to be scanned.
+          type: string
+          default: nginx #Name of the image to be scanned eg:node
+      steps:
+        - checkout
+        - <orb-name>/vscan:
+            imageName: << parameters.image-name >>
+        - store_artifacts:
+            path: /tmp/artifact-vscan
+            destination: "Filename for artifact"
+  workflows:
+    use-my-orb:
+      jobs:
+        - build
+
