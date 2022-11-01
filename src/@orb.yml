@@ -1,7 +1,6 @@
 version: 2.1
 
 description: >
-  
   This will help users to generate xray and vulnarability report for a given container and upload it to the circle CI artifact.
   After this process the container will be added to the Favourite collection in Slim Portal.
 # What will your orb allow users to accomplish?

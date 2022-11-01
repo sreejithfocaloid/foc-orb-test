@@ -32,4 +32,3 @@ usage:
     use-my-orb:
       jobs:
         - build
-
