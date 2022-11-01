@@ -1,8 +1,8 @@
 version: 2.1
 
 description: >
-  Sample orb description and this is a test orb for testing focaloid.
-  This will help users to make code simplified
+  
+  This will help users to generate xray and vulnarability report for a given container and upload it to the circle CI artifact.
 # What will your orb allow users to accomplish?
 # Descriptions should be short, simple, and informative.
 
