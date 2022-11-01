@@ -8,6 +8,10 @@ parameters:
     type: string
     default: "node"
     description: "Container to scan?"
+  cimgTag:
+    type: string
+    default: "current"
+    description: "Which tag to be used for cimg/base"
 steps:
   - run:
       environment:
