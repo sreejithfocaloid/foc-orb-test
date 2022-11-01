@@ -3,13 +3,17 @@ description: >
 # What will this job do?
 
 docker:
-  - image: 'cimg/base:current'
+  - image: 'cimg/base:<< parameters.cimgTag >>'
 
 parameters:
   imageName:
     type: string
     default: "node"
     description: "Container to scan"
+  cimgTag:
+    type: string
+    default: "current"
+    description: "Which tag to be used for cimg/base"
 steps:
   - xray:
       imageName: << parameters.imageName >>
