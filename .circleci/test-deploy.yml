@@ -15,7 +15,7 @@ jobs:
       image-name:
         description: Image to be scanned.
         type: string
-        default: nginx #Name of the image to be scanned eg:node
+        default: node #Name of the image to be scanned eg:node
       cimg-tag:
         description: Which tag to be used for cimg/base.
         type: string
