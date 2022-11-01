@@ -1,5 +1,6 @@
 description: >
-  This orb can be used to take xray report of a container using SAAS Api
+  This orb can be used to generate xray report of a container using SAAS Api.The generated report will be uploaded to Circle CI Artifact.
+  After this process the container will be added to the Favourite collection in Slim Portal.
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.

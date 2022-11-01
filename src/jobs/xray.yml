@@ -1,5 +1,6 @@
 description: >
-  This job will generate xray report of a given container.
+  This job will generate xray report of a given container using SAAS Api.The generated report will be uploaded to Circle CI Artifact.
+  After this process the container will be added to the Favourite collection in Slim Portal.
 # What will this job do?
 
 docker:

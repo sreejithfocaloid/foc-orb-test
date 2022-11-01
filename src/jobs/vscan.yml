@@ -1,5 +1,5 @@
 description: >
-  This job will generate vulnarability scan report of a given container.
+  This job will generate vulnarability scan report of a given container using SAAS Api.The generated report will be uploaded to Circle CI Artifact.
 # What will this job do?
 
 docker:
