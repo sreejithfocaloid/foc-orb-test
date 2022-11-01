@@ -2,7 +2,8 @@ description: >
   This job will generate vulnarability scan report of a given container.
 # What will this job do?
 
-executor: default
+docker:
+  - image: 'cimg/base:stable'
 
 parameters:
   imageName:
