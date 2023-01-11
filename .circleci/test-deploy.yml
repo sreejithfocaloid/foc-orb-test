@@ -15,7 +15,7 @@ jobs:
       image-name:
         description: Image to be scanned.
         type: string
-        default: node #Name of the image to be scanned eg:node
+        default: julia #Name of the image to be scanned eg:node
       image-namespace:
         description: Namespace of the image.
         type: string
