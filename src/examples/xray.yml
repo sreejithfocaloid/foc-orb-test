@@ -19,7 +19,6 @@ usage:
     <orb-name>: <namespace>/<orb-name>@1.2.3
   jobs:
     build:
-      
       docker:
         - image: cimg/base:<< pipeline.parameters.cimg-tag >>
       steps:
