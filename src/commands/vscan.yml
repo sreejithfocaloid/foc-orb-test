@@ -5,7 +5,16 @@ description: >
 parameters:
   imageName:
     type: string
-    description: "Container to scan?"
+    description: "Container to scan.eg: node"
+  imageNamespace:
+    type: string
+    description: "Namespace of image.eg: library"
+  imageTag:
+    type: string
+    description: "Version of image.eg: latest"
+  imageConnector:
+    type: string
+    description: "Connector.eg: dockerhub.public"
   cimgTag:
     type: string
     default: "current"
@@ -14,6 +23,9 @@ steps:
   - run:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
+        IMAGE_NAMESPACE: <<parameters.imageNamespace>>
+        IMAGE_TAG: <<parameters.imageTag>>
+        IMAGE_CONNECTOR: <<parameters.imageConnector>>
         VSCAN_REQUEST: <<include(scripts/xray_request.json)>>
       name: Engine Execution - Vulnarability Scan
       command: <<include(scripts/vscan.sh)>>
