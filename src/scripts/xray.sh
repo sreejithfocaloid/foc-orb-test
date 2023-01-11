@@ -67,7 +67,7 @@ echo "${xrayReport}" >> /tmp/artifact-xray;#Uploading report to Artifact
 
 
 
-shaId=$(jq -r '.source_image.identity.digests[0]' <<< "${xrayReport}")
+#shaId=$(jq -r '.source_image.identity.digests[0]' <<< "${xrayReport}")
 #tag=$(jq -r '.source_image.identity.tags[0]' <<< "${xrayReport}")
 
 
