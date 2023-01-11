@@ -31,6 +31,7 @@ jsonDataUpdated=${jsonData//__CONNECTOR_ID__/${connectorId}}
 jsonDataUpdated=${jsonDataUpdated//__NAMESPACE__/${nameSpace}}
 jsonDataUpdated=${jsonDataUpdated//__REPO__/"${PARAM_IMAGE}"}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
+jsonDataUpdated=${jsonDataUpdated//__TAG__/${tag}}
 #Starting Xray Scan
 xrayRequest=$(curl -u ":${SAAS_KEY}" -X 'POST' \
   "${API_DOMAIN}/orgs/${ORG_ID}/engine/executions" \
