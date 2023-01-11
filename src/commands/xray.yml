@@ -6,7 +6,6 @@ description: >
 parameters:
   imageName:
     type: string
-    default: "node"
     description: "Container to scan?"
   cimgTag:
     type: string

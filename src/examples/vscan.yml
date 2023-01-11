@@ -5,26 +5,25 @@ description: >
 # Comments are not retained.
 usage:
   version: 2.1
+  parameters:
+    image-name:
+      description: Image to be scanned.
+      type: string
+    cimg-tag:
+      description: Which tag to be used for cimg/base.
+      type: string
+      default: current #Which tag to be used for cimg eg:  cimg/base:current
   orbs:
     <orb-name>: <namespace>/<orb-name>@1.2.3
   jobs:
     build:
-      parameters:
-        image-name:
-          description: Image to be scanned.
-          type: string
-          default: node #Name of the image to be scanned eg:node
-        cimg-tag:
-          description: Which tag to be used for cimg/base.
-          type: string
-          default: current #Which tag to be used for cimg eg:  cimg/base:current
       docker:
-        - image: cimg/base:<< parameters.cimg-tag >>
+        - image: cimg/base:<< pipeline.parameters.cimg-tag >>
       steps:
         - checkout
         - <orb-name>/vscan:
-            imageName: << parameters.image-name >>
-            cimgTag: << parameters.cimg-tag >>
+            imageName: << pipeline.parameters.image-name >>
+            cimgTag: << pipeline.parameters.cimg-tag >>
         - store_artifacts:
             path: /tmp/artifact-vscan
             destination: "Filename for artifact"

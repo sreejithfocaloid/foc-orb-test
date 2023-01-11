@@ -17,6 +17,7 @@ entity=$(jq -r '.entity' <<< "${imageDetail}")
 echo "${imageId}"
 
 
+
 echo Starting X-Ray Scan : "${PARAM_IMAGE}"
 
 jsonData="${XRAY_REQUEST}"
