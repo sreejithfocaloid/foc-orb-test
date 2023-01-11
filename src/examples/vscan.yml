@@ -20,7 +20,7 @@ usage:
     image-connector:
       description: Connector.
       type: string
-      default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public  
+      default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public
     cimg-tag:
       description: Which tag to be used for cimg/base.
       type: string
