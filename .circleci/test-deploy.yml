@@ -46,15 +46,15 @@ jobs:
       - store_artifacts:
           path: /tmp/artifact-xray
           destination: xray-json
-      # - foc-orb-test/vscan:
-      #     imageName: << parameters.image-name >>
-      #     imageNamespace: << parameters.image-namespace >>
-      #     imageTag: << parameters.image-tag >>
-      #     imageConnector: << parameters.image-connector >>
-      #     cimgTag: << parameters.cimg-tag >>
-      # - store_artifacts:
-      #     path: /tmp/artifact-vscan
-      #     destination: vscan-json
+      - foc-orb-test/vscan:
+          imageName: << parameters.image-name >>
+          imageNamespace: << parameters.image-namespace >>
+          imageTag: << parameters.image-tag >>
+          imageConnector: << parameters.image-connector >>
+          cimgTag: << parameters.cimg-tag >>
+      - store_artifacts:
+          path: /tmp/artifact-vscan
+          destination: vscan-json
       #- foc-orb-test/slim
 
 
