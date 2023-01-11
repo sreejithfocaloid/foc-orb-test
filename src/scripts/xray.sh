@@ -74,7 +74,7 @@ shaId=$(jq -r '.source_image.identity.digests[0]' <<< "${xrayReport}")
 
 echo "${shaId}"
 echo "${tag}"
-echo "${imageId}"
+
 
 
 
