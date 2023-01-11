@@ -15,7 +15,7 @@ parameters:
     description: "Version of image.eg: latest"
   imageConnector:
     type: string
-    description: "Connector.eg: dockerhub.public"  
+    description: "Connector.eg: dockerhub.public"
   cimgTag:
     type: string
     default: "current"
@@ -24,6 +24,9 @@ steps:
   - run:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
+        IMAGE_NAMESPACE: <<parameters.imageNamespace>>
+        IMAGE_TAG: <<parameters.imageTag>>
+        IMAGE_CONNECTOR: <<parameters.imageConnector>>
         XRAY_REQUEST: <<include(scripts/xray_request.json)>>
       name: Engine Execution - X-Ray
       command: <<include(scripts/xray.sh)>>
